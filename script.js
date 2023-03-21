@@ -29,7 +29,7 @@ function showPokemon(pokemon) {
   <li>Name: ${pokemon.name}</li> 
   <li>Description: ${pokemon.description}</li>
   <li>Ability: ${pokemon.ability}</li>
-  <li>Pokédex index: 00${pokemon.dexindex}</li>
+  <li>Pokédex index: #00${pokemon.dexindex}</li>
   <li>Type: ${pokemon.type}</li>
   <li>Subtype: ${pokemon.subtype}</li>
   <li>Weaknesses: ${pokemon.weaknesses}</li>
