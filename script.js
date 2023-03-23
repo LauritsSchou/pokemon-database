@@ -1,33 +1,16 @@
 "use strict";
 window.addEventListener("load", initApp);
-function initApp() {
-  const psyduck = {
-    name: "Psyduck",
-    description:
-      "It is constantly wracked by a headache. When the headache turns intense, it begins using mysterious powers.",
-    ability: "Damp, Cloud Nine",
-    image:
-      "https://archives.bulbagarden.net/media/upload/thumb/3/3f/0054Psyduck.png/375px-0054Psyduck.png",
-    footprint: "https://archives.bulbagarden.net/media/upload/b/ba/F0054.png",
-    dexindex: 54,
-    type: "Water",
-    subtype: null,
-    weaknesses: "Grass, Electric",
-    gender: "Male or female",
-    weight: 1960,
-    height: 80,
-    generation: 1,
-    spilversion: "Yellow/Red/Blue",
-    canEvolve: true,
-    statsHP: 5,
-    statsAttack: 5.2,
-    statsDefence: 4.8,
-    statsSpecialAttack: 6.5,
-    statsSpecialDefence: 5,
-    statsSpeed: 5.5,
-  };
+async function initApp() {
+  const pokemon = await getPokemon();
+  showPokemon(pokemon);
+}
 
-  showPokemon(psyduck);
+async function getPokemon(url) {
+  const response = await fetch(
+    "https://raw.githubusercontent.com/LauritsSchou/pokemon-database/main/psyduck.json"
+  );
+  const data = await response.json();
+  return data;
 }
 
 function showPokemon(pokemon) {
@@ -47,7 +30,7 @@ function showPokemon(pokemon) {
     document.querySelector("#pokemondetails").showModal();
     const dialogHTML = /*html*/ `
     <h1>${pokemon.name}</h1>
-<img src="${pokemon.image}"></li>
+<img src="${pokemon.image}" class="center"></li>
 <h3><i>"${pokemon.description}"</i></h3>
   <li>Footprint: <img src="${pokemon.footprint}"></li>
   <li>Ability: ${pokemon.ability}</li>
