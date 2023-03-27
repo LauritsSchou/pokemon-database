@@ -2,12 +2,12 @@
 window.addEventListener("load", initApp);
 async function initApp() {
   const pokemon = await getPokemon();
-  showPokemon(pokemon);
+  pokemon.forEach(showPokemon);
 }
 
 async function getPokemon(url) {
-  const response = await fetch("https://raw.githubusercontent.com/LauritsSchou/pokemon-database/main/psyduck.json");
-  const data = await response.json();
+  const pokemon = await fetch("https://cederdorff.github.io/dat-js/05-data/pokemons.json");
+  const data = await pokemon.json();
   return data;
 }
 
@@ -18,8 +18,9 @@ function showPokemon(pokemon) {
                 <p>${pokemon.type}</p>
             </article>`;
   document.querySelector("#pokemon").insertAdjacentHTML("beforeend", pokemonHTML);
-
   document.querySelector("#pokemon article:last-child").addEventListener("click", pokemonClicked);
+  const evolve = canEvolve(pokemon);
+
   function pokemonClicked() {
     document.querySelector("#pokemondetails").showModal();
     const dialogHTML = /*html*/ `
@@ -37,15 +38,26 @@ function showPokemon(pokemon) {
   <li>Height: ${pokemon.height} centimeters</li>
   <li>Generation: ${pokemon.generation}</li>
   <li>Game version: ${pokemon.spilversion}</li>
-  <li>Can it evolve: ${pokemon.canEvolve}</li>
+  <li>Can it evolve: ${evolve}</li>
   <li>HP: ${pokemon.statsHP}</li>
   <li>Attack: ${pokemon.statsAttack}</li>
   <li>Special attack: ${pokemon.statsSpecialAttack}</li>
   <li>Special defence: ${pokemon.statsSpecialDefence}</li>
   <li>Speed: ${pokemon.statsSpeed}</li> 
   <form method="dialog">
-		<button>Close</button>
-</form>`;
-    document.querySelector("#pokemondetails").insertAdjacentHTML("beforeend", dialogHTML);
+		<button id ="closeModalButton">Close</button>
+    </form>`;
+
+    document.querySelector("#pokemondetails").innerHTML = dialogHTML;
   }
 }
+function canEvolve(pokemon) {
+  let evolve = "";
+  if (pokemon.canEvolve) {
+    evolve = `Yes`;
+  } else {
+    evolve = `No`;
+  }
+  return evolve;
+}
+
