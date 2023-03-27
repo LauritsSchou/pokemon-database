@@ -6,9 +6,7 @@ async function initApp() {
 }
 
 async function getPokemon(url) {
-  const response = await fetch(
-    "https://raw.githubusercontent.com/LauritsSchou/pokemon-database/main/psyduck.json"
-  );
+  const response = await fetch("https://raw.githubusercontent.com/LauritsSchou/pokemon-database/main/psyduck.json");
   const data = await response.json();
   return data;
 }
@@ -19,13 +17,9 @@ function showPokemon(pokemon) {
                 <h2>${pokemon.name}</h2>
                 <p>${pokemon.type}</p>
             </article>`;
-  document
-    .querySelector("#pokemon")
-    .insertAdjacentHTML("beforeend", pokemonHTML);
+  document.querySelector("#pokemon").insertAdjacentHTML("beforeend", pokemonHTML);
 
-  document
-    .querySelector("#pokemon article:last-child")
-    .addEventListener("click", pokemonClicked);
+  document.querySelector("#pokemon article:last-child").addEventListener("click", pokemonClicked);
   function pokemonClicked() {
     document.querySelector("#pokemondetails").showModal();
     const dialogHTML = /*html*/ `
@@ -52,8 +46,6 @@ function showPokemon(pokemon) {
   <form method="dialog">
 		<button>Close</button>
 </form>`;
-    document
-      .querySelector("#pokemondetails")
-      .insertAdjacentHTML("beforeend", dialogHTML);
+    document.querySelector("#pokemondetails").insertAdjacentHTML("beforeend", dialogHTML);
   }
 }
