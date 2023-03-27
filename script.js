@@ -49,7 +49,7 @@ function showPokemon(pokemon) {
   <li>Height: ${pokemon.height} centimeters</li>
   <li>Generation: ${pokemon.generation}</li>
   <li>Game version: ${pokemon.spilversion}</li>
-  <li>Can it evolve: ${evolve}</li>
+  <li>Can it evolve?: ${evolve}</li>
   <li>HP: ${pokemon.statsHP}</li>
   <li>Attack: ${pokemon.statsAttack}</li>
   <li>Special attack: ${pokemon.statsSpecialAttack}</li>
