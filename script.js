@@ -42,14 +42,14 @@ function showPokemon(pokemon) {
   <li>Ability: ${pokemon.ability}</li>
   <li>Pokédex index: #00${pokemon.dexindex}</li>
   <li>Type: ${pokemon.type}</li>
-  <li>Subtype: ${pokemon.subtype}</li>
+  <li>Subtype: ${subtype(pokemon)}</li>
   <li>Weaknesses: ${pokemon.weaknesses}</li>
   <li>Gender: ${pokemon.gender}</li>
   <li>Weight: ${pokemon.weight} grams</li>
   <li>Height: ${pokemon.height} centimeters</li>
   <li>Generation: ${pokemon.generation}</li>
   <li>Game version: ${pokemon.spilversion}</li>
-  <li>Can it evolve?: ${evolve}</li>
+  <li>Can it evolve? ${evolve}</li>
   <li>HP: ${pokemon.statsHP}</li>
   <li>Attack: ${pokemon.statsAttack}</li>
   <li>Special attack: ${pokemon.statsSpecialAttack}</li>
@@ -76,5 +76,11 @@ function footprint(pokemon) {
     return `<img src="${pokemon.footprint}"`;
   } else {
     return "";
+  }
+}
+function subtype(pokemon) {
+  if (pokemon.subtype === null) return "";
+  else {
+    return `${pokemon.subtype}`;
   }
 }
