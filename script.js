@@ -34,7 +34,7 @@ function showPokemon(pokemon) {
 
   function showPokemonDetails() {
     document.querySelector("#pokemondetails").showModal();
-    const dialogHTML = /*html*/ `
+    const pokemonCardHTML = /*html*/ `
     <h1>${pokemon.name}</h1>
 <img src="${pokemon.image}" class="center"></li>
 <h3><i>"${pokemon.description}"</i></h3>
@@ -44,12 +44,12 @@ function showPokemon(pokemon) {
   <li>Type: ${pokemon.type}</li>
   <li>Subtype: ${subtype(pokemon)}</li>
   <li>Weaknesses: ${pokemon.weaknesses}</li>
-  <li>Gender: ${pokemon.gender}</li>
+  <li>Gender: ${gender(pokemon)}</li>
   <li>Weight: ${pokemon.weight} grams</li>
   <li>Height: ${pokemon.height} centimeters</li>
-  <li>Generation: ${pokemon.generation}</li>
+  <li>Generation: ${generation(pokemon)}</li>
   <li>Game version: ${pokemon.spilversion}</li>
-  <li>Can it evolve? ${evolve}</li>
+  <li>Can it evolve: ${evolve}</li>
   <li>HP: ${pokemon.statsHP}</li>
   <li>Attack: ${pokemon.statsAttack}</li>
   <li>Special attack: ${pokemon.statsSpecialAttack}</li>
@@ -59,7 +59,7 @@ function showPokemon(pokemon) {
 		<button class="dialog-close-button">Close</button>
     </form>`;
 
-    document.querySelector("#pokemondetails").innerHTML = dialogHTML;
+    document.querySelector("#pokemondetails").innerHTML = pokemonCardHTML;
   }
 }
 function canEvolve(pokemon) {
@@ -82,5 +82,17 @@ function subtype(pokemon) {
   if (pokemon.subtype === null) return "";
   else {
     return `${pokemon.subtype}`;
+  }
+}
+function gender(pokemon) {
+  if (pokemon.gender === null) return "";
+  else {
+    return `${pokemon.gender}`;
+  }
+}
+function generation(pokemon) {
+  if (pokemon.generation === null) return "";
+  else {
+    return `${pokemon.generation}`;
   }
 }
